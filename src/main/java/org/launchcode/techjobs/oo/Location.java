@@ -22,7 +22,7 @@ public class Location {
     }
 
 
-    // Custom toString, equals, and hashCode methods:
+
 
     @Override
     public String toString() {
@@ -42,7 +42,7 @@ public class Location {
         return Objects.hash(getId());
     }
 
-    // Getters and Setters:
+
 
     public int getId() {
         return id;
