@@ -98,38 +98,36 @@ public class Job {
 
 
     @Override
-    public String toString()
-    {
-        String noJobMsg = "OOPS! This job does not seem to exist.";
+    public String toString() {
 
-        StringBuilder jobInfo = new StringBuilder( "\nID: " + getId() + "\n" );
-        jobInfo.append( "Name: " );
-        jobInfo.append( getName() == null || getName().length() == 0 ?
-                "Data not available\n" : getName() + "\n" );
-
-        jobInfo.append( "Employer: " );
-        jobInfo.append( getEmployer() == null || getEmployer().getValue() == null || getEmployer().getValue().trim().length() == 0 ?
-                "Data not available\n" : getEmployer().getValue() + "\n" );
-
-        jobInfo.append( "Location: " );
-        jobInfo.append( getLocation() == null || getLocation().getValue() == null || getLocation().getValue().trim().length() == 0 ?
-                "Data not available\n" : getLocation().getValue() + "\n" );
-
-        jobInfo.append( "Position Type: " );
-        jobInfo.append( getPositionType() == null || getPositionType().getValue() == null || getPositionType().getValue().trim().length() == 0 ?
-                "Data not available\n" : getPositionType().getValue() + "\n" );
-
-        jobInfo.append( "Core Competency: " );
-        jobInfo.append( getCoreCompetency() == null || getCoreCompetency().getValue() == null || getCoreCompetency().getValue().trim().length() == 0 ?
-                "Data not available\n" : getCoreCompetency().getValue() + "\n" );
-
-        String[] availCount = jobInfo.toString().split( "Data not available" );
-        if ( availCount.length == 6 )
-        {
-            return noJobMsg;
+        if (this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
+            return "OOPS! This job does not seem to exist.";
         }
 
-        return jobInfo.toString();
+        if (this.getName().equals("")) {
+            this.setName("Data not Available");
+        }
+        if (this.getEmployer().getValue().equals("")) {
+            this.setEmployer(new Employer("Data not Available"));
+        }
+        if (this.getLocation().getValue().equals("")) {
+            this.setLocation(new Location("Data not Available"));
+        }
+        if (this.getPositionType().getValue().equals("")) {
+            this.setPositionType(new PositionType("Data not Available"));
+        }
+        if (this.getCoreCompetency().getValue().equals("")) {
+            this.setCoreCompetency(new CoreCompetency("Data not Available"));
+        }
+
+        return "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType  + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+
     }
 }
 
