@@ -99,34 +99,33 @@ public class Job {
 
     @Override
     public String toString() {
-
-        if (this.name == null && this.employer == null && this.location == null && this.positionType == null && this.coreCompetency == null) {
-            return "OOPS! This job does not seem to exist.";
+        String employ = employer.getValue();
+        String locate = location.getValue();
+        String position = positionType.getValue();
+        String core = coreCompetency.getValue();
+        if (this.name.equals("")){
+            this.name="Data not available";
         }
-
-        if (this.getName().equals("")) {
-            this.setName("Data not Available");
+        if(employ.equals("")){
+            employ ="Data not available";
         }
-        if (this.getEmployer().getValue().equals("")) {
-            this.setEmployer(new Employer("Data not Available"));
+        if(locate.equals("")){
+            locate ="Data not available";
         }
-        if (this.getLocation().getValue().equals("")) {
-            this.setLocation(new Location("Data not Available"));
+        if(position.equals("")){
+            position ="Data not available";
         }
-        if (this.getPositionType().getValue().equals("")) {
-            this.setPositionType(new PositionType("Data not Available"));
+        if(core.equals("")){
+            core ="Data not available";
         }
-        if (this.getCoreCompetency().getValue().equals("")) {
-            this.setCoreCompetency(new CoreCompetency("Data not Available"));
-        }
-
         return "\n" +
-                "ID: " + id + "\n" +
-                "Name: " + name + "\n" +
-                "Employer: " + employer + "\n" +
-                "Location: " + location + "\n" +
-                "Position Type: " + positionType  + "\n" +
-                "Core Competency: " + coreCompetency + "\n";
+                "ID: " + id +
+                "\nName: " + name +
+                "\nEmployer: " + employ +
+                "\nLocation: " + locate +
+                "\nPosition Type: " + position +
+                "\nCore Competency: " + core +
+                "\n";
 
     }
 }
